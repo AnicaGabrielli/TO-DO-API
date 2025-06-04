@@ -16,6 +16,12 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Documentação Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: "Todo API Documentation"
+}));
+
 // Rotas
 app.use('/auth', authRoutes);
 app.use('/tasks', tasksRoutes);
